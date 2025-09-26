@@ -18,10 +18,12 @@ public class Conexion {
     
     public static Connection getConexion() throws SQLException{
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(URL,USER,PASSWORD);
         }catch(ClassNotFoundException e){
             throw new SQLException("Error a cargar el drive de la base de datos");
         }
     }
 }
+
+

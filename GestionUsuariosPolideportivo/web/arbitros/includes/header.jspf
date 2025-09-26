@@ -1,0 +1,16 @@
+<!-- Tailwind (CDN) para todas las vistas del árbitro) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<header class="bg-[#6D1B42] text-white shadow">
+  <div class="container mx-auto flex justify-between items-center px-6 py-4">
+    <h1 class="text-xl font-bold tracking-wide">UTEC Polideportivo</h1>
+
+    <div class="flex items-center gap-2">
+      <span class="text-sm font-medium"><%= session.getAttribute("usuarioNombre") != null ? session.getAttribute("usuarioNombre") : "Árbitro 1" %></span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5.121 17.804A9 9 0 1118.364 4.56 9 9 0 015.121 17.804z"/>
+      </svg>
+    </div>
+  </div>
+</header>
