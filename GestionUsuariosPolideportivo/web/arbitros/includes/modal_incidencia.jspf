@@ -1,0 +1,106 @@
+<%-- Modal Registrar/Editar Incidencia --%>
+<div id="modalIncidencia" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/40" onclick="closeIncidenciaModal()"></div>
+
+  <div class="relative mx-auto my-10 w-full max-w-xl">
+    <div class="bg-white rounded-2xl shadow-2xl p-6">
+      <div class="flex items-start justify-between mb-4">
+        <h3 id="modalIncidenciaTitle" class="text-lg font-semibold text-gray-900">
+          Registrar Nueva Incidencia
+        </h3>
+        <button type="button" class="p-1 text-gray-500 hover:text-gray-700" onclick="closeIncidenciaModal()">✕</button>
+      </div>
+
+      <form onsubmit="return submitIncidencia(event)">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Partido</label>
+            <select class="w-full rounded-xl border-gray-200 focus:ring-[#6D1B42] focus:border-[#6D1B42] bg-gray-50 text-gray-500 py-2.5">
+              <option>Seleccionar partido</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Jugador</label>
+            <select class="w-full rounded-xl border-gray-200 focus:ring-[#6D1B42] focus:border-[#6D1B42] bg-gray-50 text-gray-500 py-2.5">
+              <option>Seleccionar jugador</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de Tarjeta</label>
+              <select class="w-full rounded-xl border-gray-200 focus:ring-[#6D1B42] focus:border-[#6D1B42] bg-gray-50 py-2.5">
+                <option>Seleccionar</option>
+                <option value="Amarilla">Tarjeta Amarilla</option>
+                <option value="Roja">Tarjeta Roja</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Minuto</label>
+              <input type="number" value="45"
+                     class="w-full rounded-xl border-gray-200 focus:ring-[#6D1B42] focus:border-[#6D1B42] bg-gray-50 py-2.5 px-3" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-3">
+          <button type="button" class="px-4 py-2 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  onclick="closeIncidenciaModal()">Cancelar</button>
+
+          <button type="submit"
+                  class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-white hover:opacity-95"
+                  style="background-color:#6D1B42">
+            Registrar Incidencia
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%-- Modal Confirmación Eliminación --%>
+<div id="modalDeleteIncidencia" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/40" onclick="closeDeleteIncidencia()"></div>
+
+  <div class="relative mx-auto my-10 w-full max-w-lg">
+    <div class="bg-white rounded-2xl shadow-2xl p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">¿Eliminar incidencia?</h3>
+      <p id="deleteText" class="text-sm text-gray-600">
+        Esta acción no se puede deshacer.
+      </p>
+      <div class="mt-6 flex justify-end gap-3">
+        <button type="button" class="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200"
+                onclick="closeDeleteIncidencia()">Cancelar</button>
+        <button type="button" class="px-4 py-2 rounded-xl text-white bg-red-600 hover:bg-red-700">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openIncidenciaModal(edit) {
+    document.getElementById('modalIncidenciaTitle').textContent =
+      edit ? 'Editar Incidencia' : 'Registrar Nueva Incidencia';
+    document.getElementById('modalIncidencia').classList.remove('hidden');
+  }
+  function closeIncidenciaModal() {
+    document.getElementById('modalIncidencia').classList.add('hidden');
+  }
+  function openDeleteIncidencia(nombre, minuto) {
+    document.getElementById('deleteText').textContent =
+      `Esta acción no se puede deshacer. Se eliminará permanentemente la incidencia de ${nombre} en el minuto ${minuto}'.`;
+    document.getElementById('modalDeleteIncidencia').classList.remove('hidden');
+  }
+  function closeDeleteIncidencia() {
+    document.getElementById('modalDeleteIncidencia').classList.add('hidden');
+  }
+  function submitIncidencia(e) {
+    e.preventDefault();
+    // TODO: aquí conectas con tu backend (fetch/POST)
+    closeIncidenciaModal();
+    return false;
+  }
+</script>
