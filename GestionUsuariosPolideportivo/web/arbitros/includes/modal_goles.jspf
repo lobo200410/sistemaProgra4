@@ -1,0 +1,51 @@
+<%-- Modal: Registrar/Editar Gol --%>
+<div id="modalGoles" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-semibold text-gray-800">Registrar Gol</h2>
+      <button type="button" class="text-gray-500 hover:text-gray-700" onclick="closeGolesModal()">✕</button>
+    </div>
+
+    <!-- Formulario -->
+    <form id="formGol">
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Partido</label>
+        <input type="text" name="partido" class="mt-1 block w-full border rounded-md p-2 text-sm" required>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Jugador</label>
+        <input type="text" name="jugador" class="mt-1 block w-full border rounded-md p-2 text-sm" required>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Equipo</label>
+        <input type="text" name="equipo" class="mt-1 block w-full border rounded-md p-2 text-sm" required>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Minuto</label>
+        <input type="number" name="minuto" min="1" max="120"
+               class="mt-1 block w-full border rounded-md p-2 text-sm" required>
+      </div>
+
+      <div class="flex justify-end gap-2 mt-6">
+        <button type="button" class="px-4 py-2 rounded-md border" onclick="closeGolesModal()">Cancelar</button>
+        <button type="submit" class="px-4 py-2 rounded-md text-white" style="background-color:#6D1B42">
+          Guardar Gol
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openGolesModal() {
+    document.getElementById("modalGoles").classList.remove("hidden");
+  }
+  function closeGolesModal() {
+    document.getElementById("modalGoles").classList.add("hidden");
+  }
+</script>
+
+
